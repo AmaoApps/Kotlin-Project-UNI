@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "885748061548",
+    "firebase_url": "https://kotlinuni.firebaseio.com",
+    "project_id": "kotlinuni",
+    "storage_bucket": "kotlinuni.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885748061548:android:6e6d67e980067a18",
+        "android_client_info": {
+          "package_name": "pe.applying.kotlinuni"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885748061548-dc8uhtono2rlo36k17rihq1eeguu0q7n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pe.applying.kotlinuni",
+            "certificate_hash": "2120fb644611163d730cba72159ffb7a54426c4e"
+          }
+        },
+        {
+          "client_id": "885748061548-k82v9451b4crcc140j10ib491akea4fi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCykoCFGKWq2ZkU9Up7DkN0zJv9XYMboP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885748061548-k82v9451b4crcc140j10ib491akea4fi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

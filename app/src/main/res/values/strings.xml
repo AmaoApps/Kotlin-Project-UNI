@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CulParty</string>
+    <string name="facebook_app_id">461984241034458</string> <string name="fb_login_protocol_scheme">fb461984241034458</string>
+
+    <string name="logintext">Crea y organiza tus eventos</string>
+    <string name="loginsocial">Ingresa con tu red social para poder validar tu identidad</string>
+    <string name="logingoogle">Ingresa con Google</string>
+    <string name="loginfacebook">Ingresa con Facebook</string>
+</resources>
