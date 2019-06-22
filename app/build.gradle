@@ -81,6 +81,19 @@ dependencies {
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
+
+    //Glide
+    def glide_version = '4.4.0'
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    //CircleImageView
+    def circle_image_view = '3.0.0'
+    implementation "de.hdodenhof:circleimageview:$circle_image_view"
+
+    //kenBurns
+    def kenBurns_version = '1.0.7'
+    implementation "com.flaviofaria:kenburnsview:$kenBurns_version"
 }
 
 apply plugin: 'com.google.gms.google-services'

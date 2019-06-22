@@ -7,8 +7,6 @@ import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import pe.applying.kotlinuni.ui.LoginActivity
-import com.google.android.gms.tasks.Task
-import androidx.annotation.NonNull
 import com.facebook.login.LoginManager
 import com.google.android.gms.tasks.OnCompleteListener
 import pe.applying.kotlinuni.ui.LoginActivity.Companion.mGoogleSignInClient
