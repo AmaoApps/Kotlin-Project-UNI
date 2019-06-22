@@ -54,6 +54,8 @@ dependencies {
     implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
     def firebase_authservices_version = '17.0.0'
     implementation "com.google.android.gms:play-services-auth:$firebase_authservices_version"
+    //Firebase Remote Config
+    implementation 'com.google.firebase:firebase-config:17.0.0'
 
     //Facebook Login
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
@@ -88,8 +90,8 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$glide_version"
 
     //CircleImageView
-    def circle_image_view = '3.0.0'
-    implementation "de.hdodenhof:circleimageview:$circle_image_view"
+    def circle_image_view = '4.0.0'
+    implementation "com.mikhaellopez:circularimageview:$circle_image_view"
 
     //kenBurns
     def kenBurns_version = '1.0.7'

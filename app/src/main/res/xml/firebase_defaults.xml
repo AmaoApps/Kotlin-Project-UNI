@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>WELCOME_TEXT</key>
+        <value>Ingresa con tu red social para poder validar tu identidad</value>
+    </entry>
+    <entry>
+        <key>LOGIN_BACKFROUND</key>
+        <value></value>
+    </entry>
+</defaultsMap>

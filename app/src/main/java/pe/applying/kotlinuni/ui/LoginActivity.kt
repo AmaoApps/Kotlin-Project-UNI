@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.Glide
 import com.facebook.*
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -18,6 +19,8 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
 import pe.applying.kotlinuni.MainActivity
@@ -42,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
     companion object{
         private val RC_SIGN_IN = 777
         private lateinit var firebaseAuth: FirebaseAuth
+        private lateinit var firebaseRemoteConfig: FirebaseRemoteConfig
         lateinit var mGoogleSignInClient: GoogleSignInClient
         lateinit var mGoogleSignInOptions: GoogleSignInOptions
 
@@ -55,6 +59,25 @@ class LoginActivity : AppCompatActivity() {
 
         //Instanciando Firebase Authentication
         firebaseAuth = FirebaseAuth.getInstance()
+        firebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
+
+        //Configurando Remote Config
+        val configSettings = FirebaseRemoteConfigSettings.Builder()
+            .setDeveloperModeEnabled(BuildConfig.DEBUG)
+            .setMinimumFetchIntervalInSeconds(10)
+            .build()
+
+        firebaseRemoteConfig.setConfigSettings(configSettings)
+        firebaseRemoteConfig.setDefaults(R.xml.firebase_defaults)
+        firebaseRemoteConfig.fetch(0).addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(applicationContext, "Fetch Succeeded", Toast.LENGTH_SHORT).show()
+                firebaseRemoteConfig!!.fetchAndActivate()
+            } else {
+                Toast.makeText(applicationContext, "Fetch Failed", Toast.LENGTH_SHORT).show()
+            }
+            updateValuesFromRemote()
+        }
 
         //Configurando el Metodo de Google SignIN
         configureGoogleSignIn()
@@ -113,6 +136,26 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "Eliminados", Toast.LENGTH_SHORT).show()
             */
         })
+    }
+
+    private fun updateValuesFromRemote() {
+        var welcomeText = firebaseRemoteConfig.getString("WELCOME_TEXT")
+        var backgroundLogin = firebaseRemoteConfig.getString("LOGIN_BACKFROUND")
+        //Valida Mensaje Remote
+        if (welcomeText.isNullOrEmpty()) {
+            // No cambia nada
+        } else {
+            txtWelcome.text = welcomeText
+        }
+        //Valida PhotoBackground
+        if (backgroundLogin.isNullOrEmpty() || backgroundLogin.equals("")) {
+            //Valida la salida de la imagen
+        } else {
+            Glide.with(this)
+                .load(backgroundLogin)
+                .into(imgLogin)
+        }
+
     }
 
     private fun configureGoogleSignIn() {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -9,17 +8,22 @@
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
-                  android:gravity="center_horizontal">
+                  android:gravity="center_horizontal"
+                  android:layout_centerInParent="true"
+                  >
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
+        <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/pictureProfile"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
                 android:src="@drawable/applogo"
-                android:scaleType="fitCenter"
-                app:civ_border_width="2dp"
-                app:civ_border_color="#680FEC"/>
+                android:scaleType="centerInside"
+                app:civ_border_color="#3f51b5"
+                app:civ_border_width="4dp"
+                app:civ_shadow="true"
+                app:civ_shadow_radius="10"
+                app:civ_shadow_color="#3f51b5"/>
 
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -32,7 +36,7 @@
 
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:id="@+id/txtCertification"
+                  android:id="@+id/txtEmail"
                   android:text="Ingresado desde Firebase"
                   android:fontFamily="@font/acmeregular"
                   android:textSize="18sp"
@@ -40,7 +44,7 @@
 
         <Button android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ulises"
+                android:text="Cerrar Sesión"
                 android:id="@+id/btn_logout"
         />
 
