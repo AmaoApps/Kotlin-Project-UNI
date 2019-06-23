@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.google.firebase.auth.FirebaseAuth
@@ -13,16 +14,18 @@ import com.facebook.login.LoginManager
 import com.google.android.gms.tasks.OnCompleteListener
 import pe.applying.kotlinuni.ui.LoginActivity.Companion.mGoogleSignInClient
 import com.google.firebase.auth.UserInfo
-
-
+import pe.applying.kotlinuni.viewmodels.LoginViewModel
 
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
         showDataUser()
 
@@ -69,8 +72,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signOut() {
+
         FirebaseAuth.getInstance().signOut()
         LoginManager.getInstance().logOut()
+        loginViewModel.deleteUsers()
         mGoogleSignInClient.signOut().addOnCompleteListener(this,
             OnCompleteListener<Void> {
                 startActivity(Intent(this@MainActivity, LoginActivity::class.java).

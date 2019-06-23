@@ -193,14 +193,23 @@ class LoginActivity : AppCompatActivity() {
         // familyName -> acct.familyName -> Amao
         // foto URL -> acct.photoUrl -> Ruta de Foto
         acct.account
-        acct.displayName
+        val nombres = acct.displayName.toString()
+        val foto = acct.photoUrl.toString()
         acct.email
         acct.idToken
+        loginViewModel.insert(Usuario(
+            nombres = nombres,
+            perfil = "LoginGoogle",
+            imagen = foto,
+            calificacion = 5.0,
+            token = "TokenExpected"))
+        Toast.makeText(applicationContext, "Registrado", Toast.LENGTH_SHORT).show()
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
                 Toast.makeText(this, "Google Susscefull!", Toast.LENGTH_LONG).show()
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
                 //startActivity(LoginActivity.getLaunchIntent(this))
             } else {
@@ -219,7 +228,15 @@ class LoginActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("FBFirebase", "signInWithCredential:success")
                     val user = firebaseAuth.currentUser
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    loginViewModel.insert(Usuario(
+                        nombres = user!!.displayName.toString(),
+                        perfil = "LoginFacebook",
+                        imagen = user!!.photoUrl.toString(),
+                        calificacion = 5.0,
+                        token = "TokenExpected"))
+                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
                     // FOTO FACEBOOK -> firebaseAuth.currentUser.photoUrl.toString()
                     //updateUI(user)
                 } else {
