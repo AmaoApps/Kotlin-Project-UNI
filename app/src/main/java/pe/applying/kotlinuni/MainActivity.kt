@@ -73,9 +73,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun signOut() {
 
+        loginViewModel.deleteUsers()
         FirebaseAuth.getInstance().signOut()
         LoginManager.getInstance().logOut()
-        loginViewModel.deleteUsers()
         mGoogleSignInClient.signOut().addOnCompleteListener(this,
             OnCompleteListener<Void> {
                 startActivity(Intent(this@MainActivity, LoginActivity::class.java).

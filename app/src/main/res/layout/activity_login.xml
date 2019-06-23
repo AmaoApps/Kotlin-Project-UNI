@@ -33,6 +33,7 @@
                           android:textSize="48sp"
                           android:textAlignment="center"
                           android:padding="45dp"
+                          android:id="@+id/txtapp"
                 />
 
 

@@ -69,15 +69,7 @@ class LoginActivity : AppCompatActivity() {
 
         firebaseRemoteConfig.setConfigSettings(configSettings)
         firebaseRemoteConfig.setDefaults(R.xml.firebase_defaults)
-        firebaseRemoteConfig.fetch(0).addOnCompleteListener(this) { task ->
-            if (task.isSuccessful) {
-                Toast.makeText(applicationContext, "Fetch Succeeded", Toast.LENGTH_SHORT).show()
-                firebaseRemoteConfig!!.fetchAndActivate()
-            } else {
-                Toast.makeText(applicationContext, "Fetch Failed", Toast.LENGTH_SHORT).show()
-            }
-            updateValuesFromRemote()
-        }
+        consutingRemoteConfig()
 
         //Configurando el Metodo de Google SignIN
         configureGoogleSignIn()
@@ -136,6 +128,22 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "Eliminados", Toast.LENGTH_SHORT).show()
             */
         })
+
+        txtapp.setOnClickListener(View.OnClickListener {
+            consutingRemoteConfig()
+        })
+    }
+
+    private fun consutingRemoteConfig() {
+        firebaseRemoteConfig.fetch(0).addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(applicationContext, "Fetch Succeeded", Toast.LENGTH_SHORT).show()
+                firebaseRemoteConfig!!.fetchAndActivate()
+            } else {
+                Toast.makeText(applicationContext, "Fetch Failed", Toast.LENGTH_SHORT).show()
+            }
+            updateValuesFromRemote()
+        }
     }
 
     private fun updateValuesFromRemote() {
