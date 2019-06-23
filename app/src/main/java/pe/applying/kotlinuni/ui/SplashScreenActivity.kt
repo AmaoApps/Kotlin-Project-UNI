@@ -4,10 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import android.os.Handler
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.coroutines.runBlocking
-import pe.applying.kotlinuni.MainActivity
 import pe.applying.kotlinuni.viewmodels.LoginViewModel
 
 

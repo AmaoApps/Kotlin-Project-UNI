@@ -23,7 +23,6 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
-import pe.applying.kotlinuni.MainActivity
 import pe.applying.kotlinuni.R
 import pe.applying.kotlinuni.data.model.Usuario
 import pe.applying.kotlinuni.viewmodels.LoginViewModel
@@ -111,22 +110,10 @@ class LoginActivity : AppCompatActivity() {
 
         btn_google.setOnClickListener(View.OnClickListener {
             signIn()
-            /*
-            loginViewModel.insert(Usuario(
-                nombres = "Ulises",
-                perfil = "Invitado",
-                imagen = "Logo Default",
-                calificacion = 5.0,
-                token = "asdasda"))
-            Toast.makeText(applicationContext, "Registrado", Toast.LENGTH_SHORT).show()*/
         })
 
         btn_facebook.setOnClickListener(View.OnClickListener {
             login_button.performClick()
-            /*
-            loginViewModel.deleteUsers()
-            Toast.makeText(applicationContext, "Eliminados", Toast.LENGTH_SHORT).show()
-            */
         })
 
         txtapp.setOnClickListener(View.OnClickListener {

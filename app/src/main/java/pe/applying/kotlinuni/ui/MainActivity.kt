@@ -1,4 +1,4 @@
-package pe.applying.kotlinuni
+package pe.applying.kotlinuni.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,14 +6,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
-import pe.applying.kotlinuni.ui.LoginActivity
 import com.facebook.login.LoginManager
 import com.google.android.gms.tasks.OnCompleteListener
 import pe.applying.kotlinuni.ui.LoginActivity.Companion.mGoogleSignInClient
-import com.google.firebase.auth.UserInfo
+import pe.applying.kotlinuni.R
 import pe.applying.kotlinuni.viewmodels.LoginViewModel
 
 
